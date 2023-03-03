@@ -26,11 +26,15 @@ function TodoTable(props){
             rowDescription ={props.todos[2].description}
             rowAssigned = {props.todos[2].assigned}
             /> */}
-            {props.todos.map(todo => 
+            {props.todos.map(todo =>      
               <TodoRowItem 
+              key = {todo.id}
               rowNumber = {todo.id} 
               rowDescription = {todo.description} 
-              rowAssigned = {todo.assigned}/>)}
+              rowAssigned = {todo.assigned}
+              deleteTodo = {props.deleteTodo}
+              />)
+            }
           </tbody>
         </table>
     )
