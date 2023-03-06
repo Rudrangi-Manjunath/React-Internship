@@ -1,10 +1,9 @@
 import './App.css';
 import React,{useState} from 'react';
-import TodoTable from './components/TodoTable';
-import NewTodoForm from './components/NewTodoForm';
+import {TodoTable} from './components/TodoTable';
+import {NewTodoForm}  from './components/NewTodoForm';
 
-function App() {
-
+export const App:React.FC = () =>{
    const [showTodo,setShowTodo] = useState(false);
 
    const [todos,setTodos]=useState([
@@ -14,7 +13,7 @@ function App() {
    {id: 4, description: 'Learn SQL', assigned: 'User 4'}
   ]);
 
-   const addtodo = (description,assigned) => {
+   const addtodo = (description:string,assigned:string) => {
     let rowNumber = 0;
       if(todos.length > 0){
         rowNumber = todos[todos.length - 1].id+1;
@@ -30,7 +29,7 @@ function App() {
         setTodos(todos => [...todos, newTodo]);
     }
 
-    const deleteTodo = (rowNumber) => {
+    const deleteTodo = (rowNumber:number) => {
       setTodos(todos.filter(todo => todo.id !== rowNumber));
     }
      
@@ -41,22 +40,6 @@ function App() {
         Your Todo's
         </div>
        <div className = "card-body">
-            {/* <TodoRowItem 
-            rowNumber = {todos[0].id}   
-            rowDescription ={todos[0].description} 
-            rowAssigned = {todos[0].assigned}
-            />
-            <TodoRowItem 
-            rowNumber = {todos[1].id}
-            rowDescription ={todos[1].description}
-            rowAssigned = {todos[1].assigned}
-            />
-            <TodoRowItem 
-            rowNumber = {todos[2].id}
-            rowDescription ={todos[2].description}
-            rowAssigned = {todos[2].assigned}
-            /> */} 
-
             <TodoTable 
             todos = {todos}
             deleteTodo = {deleteTodo}
@@ -74,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+
